@@ -19,6 +19,9 @@
             <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">Categories</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link {{ ($active === "email") ? 'active' : '' }}" href="/email">Email</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>

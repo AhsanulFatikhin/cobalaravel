@@ -9,10 +9,19 @@
                 <h1 class="mb-3">{{ $post->tittle }}</h1>
         
                 <a href="/dashboard/posts" class="btn btn-success"><span data-feather="arrow-left"></span> Back to my all post</a>
-                <a href="" class="btn btn-warning"><span data-feather="edit"></span> Edit</a>
-                <a href="" class="btn btn-danger"><span data-feather="trash"></span> Delete</a>
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><span data-feather="edit"></span> Edit</a>
+                <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn-danger" onclick="return confirm('Are you sure ?')"><span data-feather="trash"></span> Delete</button>
+                </form>
                 
-                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid mt-3">
+                @if ($post->image)
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid mt-3">
+                @else
+                    <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid mt-3">
+                @endif
+
 
                 <article class="my-3 fs-5">
                     {!! $post->body !!}

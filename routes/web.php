@@ -71,6 +71,8 @@ Route::get('/dashboard', function(){
 
 Route::get('/mail', [EmailController::class, 'index']);
 
+Route::get('/email', [EmailController::class, 'show']);
+
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('posts', [
 //         'tittle' => "Post By Category : $category->name",

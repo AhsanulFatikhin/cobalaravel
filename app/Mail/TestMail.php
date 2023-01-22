@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 
 class TestMail extends Mailable
 {
@@ -26,8 +27,9 @@ class TestMail extends Mailable
     }
     public function build()
     {
+        $email = DB::table('email')->get();
         return $this->subject('Approval Document Perusahaan')
-                    ->view('email.TestMail');
+                    ->view('email.TestMail', ['email' => $email]);
     }
     /**
      * Get the message envelope.
